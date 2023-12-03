@@ -61,39 +61,6 @@ def add_new_dispute():
 
     return 'Success!'
 
-# @reviews.route('/reviews/<review_id>', methods=['PUT'])
-# def update_review(review_id):
-
-#     # collecting data from the request object
-#     the_data = request.json
-#     current_app.logger.info(the_data)
-
-#     #extracting the variable
-#     review_id = review_id
-#     comment = the_data['Comment']
-#     difficulty_rating = the_data['DifficultyRating']
-#     first_or_second_coop = the_data['FirstOrSecondCoop']
-
-#     # Constructing the query
-#     query = 'update Reviews set '
-
-
-#     query += 'Comment = "' + comment + '", '
-#     query += 'DifficultyRating = ' + str(difficulty_rating) + ', '
-#     query += 'FirstOrSecondCoop = "' + first_or_second_coop + '" '
-
-#     query += 'where ReviewID = '
-#     query += str(review_id)
-#     query += ";"
-#     current_app.logger.info(query)
-
-#     # executing and committing the insert statement
-#     cursor = db.get_db().cursor()
-#     cursor.execute(query)
-#     db.get_db().commit()
-
-#     return 'Success!'
-
 @disputes.route('/disputes/<dispute_id>', methods=['GET'])
 def get_dispute_detail (dispute_id):
     query = 'SELECT ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate FROM Dispute WHERE DisputeID = ' + str(dispute_id)
