@@ -12,7 +12,7 @@ def get_reviews():
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products
-    cursor.execute('SELECT ReviewID, Comment, DifficultyRating, FirstOrSecondCoop FROM Reviews')
+    cursor.execute('SELECT ReviewID, JobID, Comment, DifficultyRating, FirstOrSecondCoop FROM Reviews')
 
     # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
