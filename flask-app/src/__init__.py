@@ -48,12 +48,9 @@ def create_app():
     # and give a url prefix to each
     app.register_blueprint(job_openings, url_prefix='/jo')
     app.register_blueprint(reviews, url_prefix='/r')
-    app.register_blueprint(disputes, url_prefix='/d')
     app.register_blueprint(user_interactions, url_prefix='/ui')
-    app.register_blueprint(guidelines, url_prefix='/g')
     app.register_blueprint(analytics, url_prefix='/a')
     app.register_blueprint(review_responses, url_prefix='/rr')
-    app.register_blueprint(company_content, url_prefix='/cc')
     app.register_blueprint(compensation_data, url_prefix='/cd')
     app.register_blueprint(students, url_prefix='/s')
     # Don't forget to return the app object

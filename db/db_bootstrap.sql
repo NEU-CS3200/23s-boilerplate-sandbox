@@ -354,6 +354,8 @@ insert into Student (Studentid, Name, Email, Major, GradeYear, NumCoops) values 
 insert into Student (Studentid, Name, Email, Major, GradeYear, NumCoops) values (48, 'Marlene Handrock', 'mhandrock1b@baidu.com', 'Business Administration', 'Second year', 2);
 insert into Student (Studentid, Name, Email, Major, GradeYear, NumCoops) values (49, 'Corrianne Poyntz', 'cpoyntz1c@youku.com', 'Engineering', 'Third year', 1);
 insert into Student (Studentid, Name, Email, Major, GradeYear, NumCoops) values (50, 'Conant McNae', 'cmcnae1d@techcrunch.com', 'Biology', 'First year', 3);
+insert into Student (Studentid, Name, Email, Major, GradeYear, NumCoops) values (51, 'Jason Persona', 'JasonPersona@northeastern.edu', 'Persona', 'Third year', 1);
+
 
 insert into User_Interaction (ModeratorId, StudentID, InteractionID, UserTimestamp, Content, Status) values (45, 18, 1, '2023-06-20 14:15:12', 'causing delays in communication.', 0);
 insert into User_Interaction (ModeratorId, StudentID, InteractionID, UserTimestamp, Content, Status) values (16, 36, 2, '2023-07-10 03:25:24', 'an error popped up stating that the recipient''s username was invalid', 0);

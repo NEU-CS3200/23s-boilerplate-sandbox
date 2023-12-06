@@ -70,6 +70,7 @@ def update_review(review_id):
 
     # collecting data from the request object
     the_data = request.json
+    print(the_data)
     current_app.logger.info(the_data)
 
     #extracting the variable
@@ -83,7 +84,7 @@ def update_review(review_id):
 
 
     query += 'Comment = "' + comment + '", '
-    query += 'DifficultyRating = ' + str(difficulty_rating) + ', '
+    query += 'DifficultyRating = "' + str(difficulty_rating) + '", '
     query += 'FirstOrSecondCoop = "' + first_or_second_coop + '" '
 
     query += 'where ReviewID = '
