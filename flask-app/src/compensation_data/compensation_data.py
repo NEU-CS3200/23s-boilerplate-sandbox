@@ -73,13 +73,17 @@ def add_new_compensation_data():
 
     # extracting the variables and generating a random CompensationID
     compensation_id = random.randint(0, 999999999)
+    position_type = the_data['PositionType']
     average_salary = the_data['AverageSalary']
+    filter_criteria = the_data['FilterCriteria']
     company_page_id = the_data['CompanyPageID']
 
     # Constructing the query for insertion
-    query = 'INSERT INTO Compensation_Data (CompensationID, AverageSalary, CompanyPageID) VALUES ('
+    query = 'insert into Compensation_Data (CompensationID, PositionType, AverageSalary, FilterCriteria, CompanyPageID) values ('
     query += str(compensation_id) + ', '
+    query += '"' + position_type + '", '
     query += str(average_salary) + ', '
+    query += '"' + filter_criteria + '", '
     query += str(company_page_id) + ')'
 
     current_app.logger.info(query)
