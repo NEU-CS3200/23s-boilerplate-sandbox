@@ -7,7 +7,7 @@ advisor = Blueprint('advisor', __name__)
 
 # Get all advisor from the DB
 @advisor.route('/advisor', methods=['GET'])
-def get_advisor():
+def get_advisors():
     cursor = db.get_db().cursor()
     cursor.execute('select * from advisor')
     row_headers = [x[0] for x in cursor.description]
@@ -21,7 +21,7 @@ def get_advisor():
     return the_response
 
 # Get advisor detail for a specific advisor 
-@advisor.route('/advisor/<cID>', methods=['GET'])
+@advisor.route('/advisor/<aID>', methods=['GET'])
 def get_advisor(aID):
     cursor = db.get_db().cursor()
     cursor.execute('select * from advisot where advisorID = {0}'.format(aID))
