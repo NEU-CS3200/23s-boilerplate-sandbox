@@ -150,7 +150,7 @@ def add_new_course_assignment(cID):
 def get_assignment(aID):
     cursor = db.get_db().cursor()
     cursor.execute('select assignment.assignmentID, assignment.title, section.secID as sectionID, section.course as courseID'
-                    + 'from assignment join section on assignment.section = section.secID where assignment.assignmentID = {0}'.format(aID))
+                    + ' from assignment join section on assignment.section = section.secID where assignment.assignmentID = {0}'.format(aID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
