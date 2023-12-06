@@ -78,7 +78,6 @@ def get_user_interactions_detail_interaction_id (interaction_id):
 
 @user_interactions.route('/user_interactions', methods=['POST'])
 def add_new_user_interaction():
-#ModeratorId, StudentID, InteractionID, UserTimestamp, Content, Status 
     # collecting data from the request object
     the_data = request.json
     current_app.logger.info(the_data)
@@ -112,22 +111,20 @@ def add_new_user_interaction():
     return 'Success!'
 
 @user_interactions.route('/user_interactions/interaction_id/<interaction_id>', methods=['PUT'])
-def update_guideline(student_id):
+def update_user_interactionns(interaction_id):
 
     # collecting data from the request object
     the_data = request.json
     current_app.logger.info(the_data)
 
     #extracting the variable
-    moderator_id = the_data['ModeratorId']
+    moderator_id = the_data['ModeratorID']
     student_id = the_data['StudentID']
-    interaction_id = the_data['InteractionID']
     user_timestamp = the_data['UserTimestamp']
     content = the_data['Content']
     status = the_data['Status']
 
     # Constructing the query
-    #ModeratorId, StudentID, InteractionID, UserTimestamp, Content, Status
     query = 'update User_Interaction set '
 
     
@@ -135,9 +132,9 @@ def update_guideline(student_id):
     query += 'ModeratorId = ' + str(moderator_id) + ', '
     query += 'StudentID = ' + str(student_id) + ', ' 
     query += 'InteractionID = ' + str(interaction_id) + ', ' 
-    query += 'UserTimestamp = ' + str(user_timestamp) + ', ' 
+    query += 'UserTimestamp = "' + str(user_timestamp) + '", '
     query += 'Content = ' + '"' + content + '", ' 
-    query += 'Status = ' + str(status) + '"'
+    query += 'Status = ' + str(status) + ' '
 
     query += 'where InteractionID = '
     query += str(interaction_id)
@@ -152,9 +149,9 @@ def update_guideline(student_id):
     return 'Success!'
 
 @user_interactions.route('/user_interactions/interaction_id/<interaction_id>', methods=['DELETE'])
-def delete_guideline (interaction_id):
+def delete_user_interaction (interaction_id):
 
-    query = 'DELETE FROM Guidelines WHERE InteractionID = ' + str(interaction_id)
+    query = 'DELETE FROM User_Interaction WHERE InteractionID = ' + str(interaction_id)
     current_app.logger.info(query)
 
     # executing and committing the insert statement
