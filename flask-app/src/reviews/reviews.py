@@ -70,7 +70,6 @@ def update_review(review_id):
 
     # collecting data from the request object
     the_data = request.json
-    print(the_data)
     current_app.logger.info(the_data)
 
     #extracting the variable
