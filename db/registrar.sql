@@ -211,9 +211,9 @@ insert into student (firstName, lastName, email, gradYear, address, gender, advi
 insert into student (firstName, lastName, email, gradYear, address, gender, advisor, department, major) values ('Ramona', 'Flowers', 'rflowers@netflix.com', 2028, '122 Door St', 'Female', 5, 5, 3);
 insert into student (firstName, lastName, email, gradYear, address, gender, advisor, department, major) values ('Alec', 'Nine', 'minecraft@thewayhome.com', 2029, '930 Alpha Way', 'Non-binary', 3, 2, 1);
 
-insert into professor (firstName, lastName, email, officeLocation, department) values ('Abe', 'Lincoln', 'honest@abe.com', '303 Snell', 1);
-insert into professor (firstName, lastName, email, officeLocation, department) values ('Glenn', 'Horton', 'ghort@mail.com', '212 Richards', 4);
-insert into professor (firstName, lastName, email, officeLocation, department) values ('Lisa', 'Simpson', 'lisasimpson@fox.com', '150 Smothers', 2);
+insert into professor (firstName, lastName, email) values ('Abe', 'Lincoln', 'honest@abe.com');
+insert into professor (firstName, lastName, email) values ('Glenn', 'Horton', 'ghort@mail.com');
+insert into professor (firstName, lastName, email) values ('Lisa', 'Simpson', 'lisasimpson@fox.com');
 
 insert into course (name, term, department, professor) values ('Introduction to Classes', '2024SP', 1, 2);
 insert into course (name, term, department, professor) values ('Secondary Classes', '2025SP', 3, 3);
