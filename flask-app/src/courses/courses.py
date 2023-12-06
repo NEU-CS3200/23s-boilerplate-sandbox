@@ -103,8 +103,11 @@ def delete_course(cID):
 @courses.route('/courses/<cID>/assignments', methods=['GET'])
 def get_course_assignments(cID):
     cursor = db.get_db().cursor()
+    current_app.logger.info('select assignment.assignmentID, assignment.title, section.secID as sectionID' 
+                   + ' from assignment join section on assignment.section = section.secID where section.course = {0}'.format(cID))
     cursor.execute('select assignment.assignmentID, assignment.title, section.secID as sectionID' 
-                   + 'from assignment join section on assignment.section = section.secID where section.course = {0}'.format(cID))
+                   + ' from assignment join section on assignment.section = section.secID where section.course = {0}'.format(cID))
+    
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
