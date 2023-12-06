@@ -83,7 +83,7 @@ def update_review(review_id):
 
 
     query += 'Comment = "' + comment + '", '
-    query += 'DifficultyRating = ' + str(difficulty_rating) + ', '
+    query += 'DifficultyRating = "' + str(difficulty_rating) + '", '
     query += 'FirstOrSecondCoop = "' + first_or_second_coop + '" '
 
     query += 'where ReviewID = '
