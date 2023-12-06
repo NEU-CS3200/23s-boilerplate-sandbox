@@ -14,7 +14,7 @@ def get_students():
     cursor.execute('SELECT * FROM student')
 
     # grab the column headers from the returned data
-    column_headers = [x[0] for x in cursor.descripti@on]
+    column_headers = [x[0] for x in cursor.description]
 
     # create an empty dictionary object to use in 
     # putting column headers together with data
