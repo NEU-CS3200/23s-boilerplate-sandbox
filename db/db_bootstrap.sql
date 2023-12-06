@@ -77,18 +77,7 @@ create table User_Interaction
 );
 
 
-create table Guidelines
-(
-    ModeratorID INT not null,
-    GuidelineID INT primary key not null ,
-    Content     VARCHAR(300) not null ,
-    UpdateDate  DATETIME not null,
 
-    CONSTRAINT fk_03 FOREIGN KEY (ModeratorID)
-        REFERENCES Moderator (ModeratorID)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
-);
 
 CREATE TABLE Analytics
 (
@@ -192,22 +181,7 @@ create table Company_Representative
         ON DELETE CASCADE
 );
 
-CREATE TABLE Dispute
-(
-     ReviewID int,
-     ModeratorID int,
-     DisputeID int primary key,
-     ResolutionStatus varchar(15),
-     ResolutionDate DATETIME,
-     CONSTRAINT fk_13 FOREIGN KEY (ReviewID)
-         REFERENCES Reviews (ReviewID)
-         ON UPDATE CASCADE
-         ON DELETE CASCADE,
-     CONSTRAINT fk_14 FOREIGN KEY (ModeratorID)
-         REFERENCES Moderator (ModeratorID)
-         ON UPDATE CASCADE
-         ON DELETE CASCADE
-);
+
 
 CREATE TABLE Review_Response
 (
@@ -226,19 +200,7 @@ CREATE TABLE Review_Response
         ON DELETE CASCADE
 );
 
-CREATE TABLE Company_Content
-(
-    CompanyRepID int not null ,
-    ContentID int primary key not null ,
-    ContentType varchar(50) not null ,
-    ContentData varchar(150) not null ,
-    PostDate DATETIME not null ,
 
-    CONSTRAINT fk_17 FOREIGN KEY (CompanyRepID)
-        REFERENCES Company_Representative (CompanyRepID)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
-);
 
 CREATE TABLE Compensation_Data
 (
@@ -407,57 +369,6 @@ insert into User_Interaction (ModeratorId, StudentID, InteractionID, UserTimesta
 insert into User_Interaction (ModeratorId, StudentID, InteractionID, UserTimestamp, Content, Status) values (33, 18, 48, '2022-12-08 17:29:20', 'A user reported a bug in the messaging feature. When trying to send a message', 1);
 insert into User_Interaction (ModeratorId, StudentID, InteractionID, UserTimestamp, Content, Status) values (23, 19, 49, '2023-09-04 16:59:12', 'The user experienced a technical issue while filling out a form. After submitting the form', 1);
 insert into User_Interaction (ModeratorId, StudentID, InteractionID, UserTimestamp, Content, Status) values (46, 26, 50, '2023-02-05 00:51:00', 'even though it was correct.', 1);
-
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (27, 1, 'Ut enim ad minim veniam', '2023-10-29 12:16:34');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (18, 2, 'Lorem ipsum dolor sit amet', '2023-04-04 04:07:50');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (22, 3, 'Ut enim ad minim veniam', '2023-03-02 09:58:29');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (18, 4, 'Consectetur adipiscing elit', '2022-12-17 03:10:45');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (17, 5, 'Ut enim ad minim veniam', '2022-12-05 08:40:55');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (10, 6, 'Ut enim ad minim veniam', '2023-01-07 06:35:16');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (16, 7, 'Consectetur adipiscing elit', '2023-01-06 05:58:06');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (1, 8, 'Lorem ipsum dolor sit amet', '2023-01-28 22:01:32');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (42, 9, 'Ut enim ad minim veniam', '2022-11-28 10:24:30');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (8, 10, 'Sed do eiusmod tempor incididunt', '2023-08-24 01:56:59');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (19, 11, 'Lorem ipsum dolor sit amet', '2023-09-09 21:30:23');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (27, 12, 'Ut labore et dolore magna aliqua', '2023-04-07 07:43:37');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (31, 13, 'Ut labore et dolore magna aliqua', '2022-12-03 02:36:21');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (18, 14, 'Sed do eiusmod tempor incididunt', '2023-04-26 12:29:09');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (44, 15, 'Consectetur adipiscing elit', '2023-05-04 06:36:41');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (3, 16, 'Ut enim ad minim veniam', '2023-03-11 22:29:13');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (11, 17, 'Ut labore et dolore magna aliqua', '2023-08-03 20:27:16');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (29, 18, 'Consectetur adipiscing elit', '2022-12-10 08:36:36');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (34, 19, 'Ut enim ad minim veniam', '2023-04-25 23:19:24');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (28, 20, 'Lorem ipsum dolor sit amet', '2023-11-19 04:15:55');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (15, 21, 'Ut enim ad minim veniam', '2023-10-09 22:12:22');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (9, 22, 'Sed do eiusmod tempor incididunt', '2023-02-23 09:32:33');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (8, 23, 'Sed do eiusmod tempor incididunt', '2022-12-17 04:46:57');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (44, 24, 'Lorem ipsum dolor sit amet', '2023-06-29 13:41:34');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (35, 25, 'Consectetur adipiscing elit', '2023-09-09 19:36:37');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (10, 26, 'Sed do eiusmod tempor incididunt', '2023-02-28 17:06:45');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (43, 27, 'Ut enim ad minim veniam', '2022-12-28 06:53:32');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (47, 28, 'Ut enim ad minim veniam', '2023-01-06 03:57:21');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (24, 29, 'Consectetur adipiscing elit', '2023-02-13 07:21:17');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (33, 30, 'Lorem ipsum dolor sit amet', '2023-08-04 11:56:29');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (26, 31, 'Ut enim ad minim veniam', '2023-03-26 05:18:42');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (18, 32, 'Consectetur adipiscing elit', '2023-04-27 02:12:20');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (33, 33, 'Sed do eiusmod tempor incididunt', '2022-12-07 12:34:42');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (19, 34, 'Lorem ipsum dolor sit amet', '2023-01-30 05:58:51');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (37, 35, 'Lorem ipsum dolor sit amet', '2023-07-11 23:05:56');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (4, 36, 'Sed do eiusmod tempor incididunt', '2023-01-06 08:42:14');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (42, 37, 'Ut enim ad minim veniam', '2023-10-17 20:17:02');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (47, 38, 'Ut labore et dolore magna aliqua', '2023-04-04 16:07:56');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (47, 39, 'Ut labore et dolore magna aliqua', '2023-09-21 20:13:59');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (37, 40, 'Consectetur adipiscing elit', '2023-09-03 03:32:52');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (30, 41, 'Ut labore et dolore magna aliqua', '2023-07-16 03:43:27');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (5, 42, 'Lorem ipsum dolor sit amet', '2023-10-08 13:38:00');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (30, 43, 'Lorem ipsum dolor sit amet', '2023-01-05 18:28:06');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (38, 44, 'Ut labore et dolore magna aliqua', '2023-08-30 23:04:22');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (14, 45, 'Consectetur adipiscing elit', '2023-06-15 10:42:18');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (25, 46, 'Sed do eiusmod tempor incididunt', '2023-04-10 12:34:10');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (35, 47, 'Consectetur adipiscing elit', '2023-02-01 05:55:32');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (17, 48, 'Ut labore et dolore magna aliqua', '2023-11-12 20:43:42');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (40, 49, 'Sed do eiusmod tempor incididunt', '2023-11-25 08:34:02');
-insert into Guidelines (ModeratorID, GuidelineID, Content, UpdateDate) values (48, 50, 'Ut enim ad minim veniam', '2023-01-09 21:56:05');
 
 insert into Analytics (AnalyticsID, EngagementScore, TrendType, ModeratorID, Data) values (1, 34, 'Upward', 46, 'Statistical modeling');
 insert into Analytics (AnalyticsID, EngagementScore, TrendType, ModeratorID, Data) values (2, 80, 'Upward', 48, 'Natural language processing');
@@ -663,107 +574,257 @@ insert into Job_Openings (CompanyPageID, JobID, Name, RoleDescription, Difficult
 insert into Job_Openings (CompanyPageID, JobID, Name, RoleDescription, Difficulty, GradeYearRequirement) values (12, 49, 'Amalie Petz', 'Graphic Designer', 'pro', 'first year');
 insert into Job_Openings (CompanyPageID, JobID, Name, RoleDescription, Difficulty, GradeYearRequirement) values (12, 50, 'Winna Junes', 'HR Coordinator', 'pro', 'first year');
 
-insert into Student_Job_Search (JobID, StudentID) values (38, 49);
-insert into Student_Job_Search (JobID, StudentID) values (4, 40);
-insert into Student_Job_Search (JobID, StudentID) values (38, 13);
-insert into Student_Job_Search (JobID, StudentID) values (36, 17);
-insert into Student_Job_Search (JobID, StudentID) values (36, 33);
-insert into Student_Job_Search (JobID, StudentID) values (25, 3);
-insert into Student_Job_Search (JobID, StudentID) values (32, 16);
-insert into Student_Job_Search (JobID, StudentID) values (34, 46);
-insert into Student_Job_Search (JobID, StudentID) values (34, 13);
-insert into Student_Job_Search (JobID, StudentID) values (7, 34);
-insert into Student_Job_Search (JobID, StudentID) values (43, 14);
-insert into Student_Job_Search (JobID, StudentID) values (35, 10);
-insert into Student_Job_Search (JobID, StudentID) values (36, 41);
-insert into Student_Job_Search (JobID, StudentID) values (3, 21);
-insert into Student_Job_Search (JobID, StudentID) values (17, 50);
-insert into Student_Job_Search (JobID, StudentID) values (4, 28);
-insert into Student_Job_Search (JobID, StudentID) values (37, 45);
-insert into Student_Job_Search (JobID, StudentID) values (16, 30);
-insert into Student_Job_Search (JobID, StudentID) values (40, 16);
-insert into Student_Job_Search (JobID, StudentID) values (29, 30);
-insert into Student_Job_Search (JobID, StudentID) values (7, 37);
-insert into Student_Job_Search (JobID, StudentID) values (25, 25);
-insert into Student_Job_Search (JobID, StudentID) values (28, 22);
-insert into Student_Job_Search (JobID, StudentID) values (16, 44);
-insert into Student_Job_Search (JobID, StudentID) values (5, 11);
-insert into Student_Job_Search (JobID, StudentID) values (35, 11);
-insert into Student_Job_Search (JobID, StudentID) values (5, 11);
-insert into Student_Job_Search (JobID, StudentID) values (46, 27);
-insert into Student_Job_Search (JobID, StudentID) values (16, 43);
-insert into Student_Job_Search (JobID, StudentID) values (7, 30);
-insert into Student_Job_Search (JobID, StudentID) values (41, 15);
-insert into Student_Job_Search (JobID, StudentID) values (45, 18);
-insert into Student_Job_Search (JobID, StudentID) values (29, 2);
-insert into Student_Job_Search (JobID, StudentID) values (16, 4);
-insert into Student_Job_Search (JobID, StudentID) values (30, 25);
-insert into Student_Job_Search (JobID, StudentID) values (25, 8);
-insert into Student_Job_Search (JobID, StudentID) values (42, 48);
-insert into Student_Job_Search (JobID, StudentID) values (32, 30);
-insert into Student_Job_Search (JobID, StudentID) values (11, 45);
-insert into Student_Job_Search (JobID, StudentID) values (15, 3);
-insert into Student_Job_Search (JobID, StudentID) values (37, 50);
-insert into Student_Job_Search (JobID, StudentID) values (32, 18);
-insert into Student_Job_Search (JobID, StudentID) values (11, 44);
-insert into Student_Job_Search (JobID, StudentID) values (23, 43);
-insert into Student_Job_Search (JobID, StudentID) values (28, 44);
-insert into Student_Job_Search (JobID, StudentID) values (20, 40);
-insert into Student_Job_Search (JobID, StudentID) values (15, 37);
-insert into Student_Job_Search (JobID, StudentID) values (27, 48);
+insert into Student_Job_Search (JobID, StudentID) values (41, 30);
+insert into Student_Job_Search (JobID, StudentID) values (28, 41);
+insert into Student_Job_Search (JobID, StudentID) values (31, 30);
+insert into Student_Job_Search (JobID, StudentID) values (18, 27);
+insert into Student_Job_Search (JobID, StudentID) values (27, 50);
+insert into Student_Job_Search (JobID, StudentID) values (4, 20);
 insert into Student_Job_Search (JobID, StudentID) values (39, 38);
-insert into Student_Job_Search (JobID, StudentID) values (35, 48);
+insert into Student_Job_Search (JobID, StudentID) values (32, 37);
+insert into Student_Job_Search (JobID, StudentID) values (41, 27);
+insert into Student_Job_Search (JobID, StudentID) values (27, 48);
+insert into Student_Job_Search (JobID, StudentID) values (16, 49);
+insert into Student_Job_Search (JobID, StudentID) values (19, 19);
+insert into Student_Job_Search (JobID, StudentID) values (45, 9);
+insert into Student_Job_Search (JobID, StudentID) values (36, 42);
+insert into Student_Job_Search (JobID, StudentID) values (22, 25);
+insert into Student_Job_Search (JobID, StudentID) values (48, 12);
+insert into Student_Job_Search (JobID, StudentID) values (43, 34);
+insert into Student_Job_Search (JobID, StudentID) values (26, 36);
+insert into Student_Job_Search (JobID, StudentID) values (18, 32);
+insert into Student_Job_Search (JobID, StudentID) values (19, 33);
+insert into Student_Job_Search (JobID, StudentID) values (40, 39);
+insert into Student_Job_Search (JobID, StudentID) values (31, 38);
+insert into Student_Job_Search (JobID, StudentID) values (1, 42);
+insert into Student_Job_Search (JobID, StudentID) values (2, 43);
+insert into Student_Job_Search (JobID, StudentID) values (18, 28);
+insert into Student_Job_Search (JobID, StudentID) values (48, 46);
+insert into Student_Job_Search (JobID, StudentID) values (6, 8);
+insert into Student_Job_Search (JobID, StudentID) values (15, 34);
+insert into Student_Job_Search (JobID, StudentID) values (30, 32);
+insert into Student_Job_Search (JobID, StudentID) values (31, 35);
+insert into Student_Job_Search (JobID, StudentID) values (49, 14);
+insert into Student_Job_Search (JobID, StudentID) values (49, 49);
+insert into Student_Job_Search (JobID, StudentID) values (7, 19);
+insert into Student_Job_Search (JobID, StudentID) values (32, 20);
+insert into Student_Job_Search (JobID, StudentID) values (18, 30);
+insert into Student_Job_Search (JobID, StudentID) values (11, 40);
+insert into Student_Job_Search (JobID, StudentID) values (21, 35);
+insert into Student_Job_Search (JobID, StudentID) values (29, 29);
+insert into Student_Job_Search (JobID, StudentID) values (34, 38);
+insert into Student_Job_Search (JobID, StudentID) values (43, 30);
+insert into Student_Job_Search (JobID, StudentID) values (1, 26);
+insert into Student_Job_Search (JobID, StudentID) values (25, 21);
+insert into Student_Job_Search (JobID, StudentID) values (19, 14);
+insert into Student_Job_Search (JobID, StudentID) values (27, 29);
+insert into Student_Job_Search (JobID, StudentID) values (31, 27);
+insert into Student_Job_Search (JobID, StudentID) values (22, 6);
+insert into Student_Job_Search (JobID, StudentID) values (21, 38);
+insert into Student_Job_Search (JobID, StudentID) values (5, 25);
+insert into Student_Job_Search (JobID, StudentID) values (44, 39);
+insert into Student_Job_Search (JobID, StudentID) values (44, 45);
+insert into Student_Job_Search (JobID, StudentID) values (25, 6);
+insert into Student_Job_Search (JobID, StudentID) values (24, 26);
+insert into Student_Job_Search (JobID, StudentID) values (21, 37);
+insert into Student_Job_Search (JobID, StudentID) values (9, 34);
+insert into Student_Job_Search (JobID, StudentID) values (18, 25);
+insert into Student_Job_Search (JobID, StudentID) values (9, 50);
+insert into Student_Job_Search (JobID, StudentID) values (38, 19);
+insert into Student_Job_Search (JobID, StudentID) values (3, 8);
+insert into Student_Job_Search (JobID, StudentID) values (17, 42);
+insert into Student_Job_Search (JobID, StudentID) values (49, 41);
+insert into Student_Job_Search (JobID, StudentID) values (8, 5);
+insert into Student_Job_Search (JobID, StudentID) values (38, 6);
+insert into Student_Job_Search (JobID, StudentID) values (1, 21);
+insert into Student_Job_Search (JobID, StudentID) values (19, 31);
+insert into Student_Job_Search (JobID, StudentID) values (40, 8);
+insert into Student_Job_Search (JobID, StudentID) values (22, 35);
+insert into Student_Job_Search (JobID, StudentID) values (33, 22);
+insert into Student_Job_Search (JobID, StudentID) values (28, 28);
+insert into Student_Job_Search (JobID, StudentID) values (36, 4);
+insert into Student_Job_Search (JobID, StudentID) values (10, 18);
+insert into Student_Job_Search (JobID, StudentID) values (49, 36);
+insert into Student_Job_Search (JobID, StudentID) values (25, 20);
+insert into Student_Job_Search (JobID, StudentID) values (1, 41);
+insert into Student_Job_Search (JobID, StudentID) values (41, 36);
+insert into Student_Job_Search (JobID, StudentID) values (43, 39);
+insert into Student_Job_Search (JobID, StudentID) values (49, 10);
+insert into Student_Job_Search (JobID, StudentID) values (34, 40);
+insert into Student_Job_Search (JobID, StudentID) values (12, 12);
+insert into Student_Job_Search (JobID, StudentID) values (41, 19);
+insert into Student_Job_Search (JobID, StudentID) values (2, 4);
+insert into Student_Job_Search (JobID, StudentID) values (18, 13);
+insert into Student_Job_Search (JobID, StudentID) values (42, 32);
+insert into Student_Job_Search (JobID, StudentID) values (11, 10);
+insert into Student_Job_Search (JobID, StudentID) values (48, 35);
+insert into Student_Job_Search (JobID, StudentID) values (46, 27);
+insert into Student_Job_Search (JobID, StudentID) values (21, 32);
+insert into Student_Job_Search (JobID, StudentID) values (27, 21);
+insert into Student_Job_Search (JobID, StudentID) values (30, 27);
+insert into Student_Job_Search (JobID, StudentID) values (24, 7);
+insert into Student_Job_Search (JobID, StudentID) values (29, 47);
+insert into Student_Job_Search (JobID, StudentID) values (24, 46);
+insert into Student_Job_Search (JobID, StudentID) values (32, 4);
+insert into Student_Job_Search (JobID, StudentID) values (42, 17);
+insert into Student_Job_Search (JobID, StudentID) values (13, 12);
+insert into Student_Job_Search (JobID, StudentID) values (34, 42);
+insert into Student_Job_Search (JobID, StudentID) values (23, 36);
+insert into Student_Job_Search (JobID, StudentID) values (26, 22);
+insert into Student_Job_Search (JobID, StudentID) values (39, 21);
+insert into Student_Job_Search (JobID, StudentID) values (28, 43);
+insert into Student_Job_Search (JobID, StudentID) values (35, 32);
+insert into Student_Job_Search (JobID, StudentID) values (7, 9);
+insert into Student_Job_Search (JobID, StudentID) values (44, 22);
+insert into Student_Job_Search (JobID, StudentID) values (1, 20);
+insert into Student_Job_Search (JobID, StudentID) values (33, 17);
+insert into Student_Job_Search (JobID, StudentID) values (26, 45);
+insert into Student_Job_Search (JobID, StudentID) values (29, 48);
+insert into Student_Job_Search (JobID, StudentID) values (43, 37);
+insert into Student_Job_Search (JobID, StudentID) values (1, 19);
+insert into Student_Job_Search (JobID, StudentID) values (43, 36);
+insert into Student_Job_Search (JobID, StudentID) values (47, 49);
+insert into Student_Job_Search (JobID, StudentID) values (45, 37);
+insert into Student_Job_Search (JobID, StudentID) values (3, 8);
+insert into Student_Job_Search (JobID, StudentID) values (46, 4);
+insert into Student_Job_Search (JobID, StudentID) values (31, 6);
+insert into Student_Job_Search (JobID, StudentID) values (26, 21);
+insert into Student_Job_Search (JobID, StudentID) values (45, 48);
+insert into Student_Job_Search (JobID, StudentID) values (17, 41);
+insert into Student_Job_Search (JobID, StudentID) values (3, 30);
+insert into Student_Job_Search (JobID, StudentID) values (5, 25);
+insert into Student_Job_Search (JobID, StudentID) values (43, 34);
+insert into Student_Job_Search (JobID, StudentID) values (27, 13);
+insert into Student_Job_Search (JobID, StudentID) values (47, 11);
+insert into Student_Job_Search (JobID, StudentID) values (39, 12);
+insert into Student_Job_Search (JobID, StudentID) values (36, 41);
+insert into Student_Job_Search (JobID, StudentID) values (46, 19);
+insert into Student_Job_Search (JobID, StudentID) values (3, 50);
+insert into Student_Job_Search (JobID, StudentID) values (24, 5);
+insert into Student_Job_Search (JobID, StudentID) values (7, 4);
+insert into Student_Job_Search (JobID, StudentID) values (48, 47);
+insert into Student_Job_Search (JobID, StudentID) values (27, 36);
+insert into Student_Job_Search (JobID, StudentID) values (26, 14);
+insert into Student_Job_Search (JobID, StudentID) values (33, 10);
+insert into Student_Job_Search (JobID, StudentID) values (36, 32);
+insert into Student_Job_Search (JobID, StudentID) values (15, 24);
+insert into Student_Job_Search (JobID, StudentID) values (7, 10);
+insert into Student_Job_Search (JobID, StudentID) values (39, 39);
+insert into Student_Job_Search (JobID, StudentID) values (41, 36);
+insert into Student_Job_Search (JobID, StudentID) values (30, 24);
+insert into Student_Job_Search (JobID, StudentID) values (3, 39);
+insert into Student_Job_Search (JobID, StudentID) values (19, 31);
+insert into Student_Job_Search (JobID, StudentID) values (25, 30);
+insert into Student_Job_Search (JobID, StudentID) values (26, 6);
+insert into Student_Job_Search (JobID, StudentID) values (2, 6);
+insert into Student_Job_Search (JobID, StudentID) values (11, 26);
+insert into Student_Job_Search (JobID, StudentID) values (7, 42);
+insert into Student_Job_Search (JobID, StudentID) values (16, 14);
+insert into Student_Job_Search (JobID, StudentID) values (33, 14);
+insert into Student_Job_Search (JobID, StudentID) values (1, 8);
+insert into Student_Job_Search (JobID, StudentID) values (37, 23);
+insert into Student_Job_Search (JobID, StudentID) values (5, 15);
+insert into Student_Job_Search (JobID, StudentID) values (18, 34);
+insert into Student_Job_Search (JobID, StudentID) values (50, 38);
+insert into Student_Job_Search (JobID, StudentID) values (18, 30);
+insert into Student_Job_Search (JobID, StudentID) values (17, 21);
+insert into Student_Job_Search (JobID, StudentID) values (8, 7);
+insert into Student_Job_Search (JobID, StudentID) values (13, 36);
+insert into Student_Job_Search (JobID, StudentID) values (43, 45);
+insert into Student_Job_Search (JobID, StudentID) values (32, 10);
+insert into Student_Job_Search (JobID, StudentID) values (38, 28);
+insert into Student_Job_Search (JobID, StudentID) values (22, 47);
+insert into Student_Job_Search (JobID, StudentID) values (13, 11);
+insert into Student_Job_Search (JobID, StudentID) values (11, 4);
+insert into Student_Job_Search (JobID, StudentID) values (40, 49);
+insert into Student_Job_Search (JobID, StudentID) values (22, 5);
+insert into Student_Job_Search (JobID, StudentID) values (47, 36);
+insert into Student_Job_Search (JobID, StudentID) values (20, 21);
+insert into Student_Job_Search (JobID, StudentID) values (33, 23);
+insert into Student_Job_Search (JobID, StudentID) values (21, 15);
+insert into Student_Job_Search (JobID, StudentID) values (49, 27);
+insert into Student_Job_Search (JobID, StudentID) values (13, 34);
+insert into Student_Job_Search (JobID, StudentID) values (22, 45);
+insert into Student_Job_Search (JobID, StudentID) values (12, 29);
+insert into Student_Job_Search (JobID, StudentID) values (39, 5);
+insert into Student_Job_Search (JobID, StudentID) values (45, 21);
+insert into Student_Job_Search (JobID, StudentID) values (31, 19);
+insert into Student_Job_Search (JobID, StudentID) values (16, 47);
+insert into Student_Job_Search (JobID, StudentID) values (16, 9);
+insert into Student_Job_Search (JobID, StudentID) values (15, 22);
+insert into Student_Job_Search (JobID, StudentID) values (49, 39);
+insert into Student_Job_Search (JobID, StudentID) values (46, 45);
+insert into Student_Job_Search (JobID, StudentID) values (16, 9);
+insert into Student_Job_Search (JobID, StudentID) values (21, 17);
+insert into Student_Job_Search (JobID, StudentID) values (48, 46);
+insert into Student_Job_Search (JobID, StudentID) values (30, 32);
+insert into Student_Job_Search (JobID, StudentID) values (42, 27);
+insert into Student_Job_Search (JobID, StudentID) values (46, 6);
+insert into Student_Job_Search (JobID, StudentID) values (12, 16);
+insert into Student_Job_Search (JobID, StudentID) values (27, 6);
+insert into Student_Job_Search (JobID, StudentID) values (7, 13);
+insert into Student_Job_Search (JobID, StudentID) values (44, 21);
+insert into Student_Job_Search (JobID, StudentID) values (1, 12);
+insert into Student_Job_Search (JobID, StudentID) values (11, 16);
+insert into Student_Job_Search (JobID, StudentID) values (5, 23);
+insert into Student_Job_Search (JobID, StudentID) values (40, 49);
+insert into Student_Job_Search (JobID, StudentID) values (19, 36);
+insert into Student_Job_Search (JobID, StudentID) values (25, 40);
+insert into Student_Job_Search (JobID, StudentID) values (16, 49);
+insert into Student_Job_Search (JobID, StudentID) values (2, 28);
+insert into Student_Job_Search (JobID, StudentID) values (47, 47);
+insert into Student_Job_Search (JobID, StudentID) values (2, 32);
 
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (19, 13, 23, 1, 'The management team was effective in providing guidance and support.', 51, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (29, 14, 31, 2, 'The management team was effective in providing guidance and support.', 100, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (33, 49, 17, 3, 'I had the chance to work on challenging and interesting projects.', 49, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (1, 12, 19, 4, 'I enjoyed collaborating with my colleagues on various projects.', 54, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (50, 11, 42, 5, 'The workload was manageable and allowed for a good work-life balance.', 84, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (34, 37, 8, 6, 'I felt valued and recognized for my contributions.', 18, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (13, 28, 33, 7, 'I appreciated the opportunities for professional growth and development.', 53, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (22, 30, 48, 8, 'I received constructive feedback that helped me improve my skills.', 82, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (4, 34, 35, 9, 'I had the chance to work on challenging and interesting projects.', 44, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (28, 46, 9, 10, 'The company culture fostered creativity and innovation.', 41, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (9, 28, 25, 11, 'I enjoyed collaborating with my colleagues on various projects.', 13, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (37, 18, 35, 12, 'The company culture fostered creativity and innovation.', 74, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (23, 35, 37, 13, 'The communication within the team was clear and efficient.', 91, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (12, 16, 18, 14, 'The management team was effective in providing guidance and support.', 58, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (32, 6, 19, 15, 'I received constructive feedback that helped me improve my skills.', 80, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (10, 3, 17, 16, 'The work environment was positive and supportive.', 42, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (35, 23, 37, 17, 'Working at the company was a great experience.', 8, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (19, 41, 21, 18, 'The workload was manageable and allowed for a good work-life balance.', 22, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (36, 8, 25, 19, 'The communication within the team was clear and efficient.', 49, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (28, 30, 11, 20, 'I appreciated the opportunities for professional growth and development.', 98, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (43, 20, 13, 21, 'I appreciated the opportunities for professional growth and development.', 80, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (6, 27, 10, 22, 'I had the chance to work on challenging and interesting projects.', 66, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (12, 6, 16, 23, 'I had the chance to work on challenging and interesting projects.', 17, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (42, 30, 40, 24, 'The workload was manageable and allowed for a good work-life balance.', 86, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (45, 8, 9, 25, 'The management team was effective in providing guidance and support.', 49, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (49, 27, 50, 26, 'The communication within the team was clear and efficient.', 17, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (38, 16, 50, 27, 'I appreciated the opportunities for professional growth and development.', 45, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (38, 40, 10, 28, 'I had the chance to work on challenging and interesting projects.', 70, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (15, 47, 11, 29, 'I appreciated the opportunities for professional growth and development.', 57, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (1, 14, 50, 30, 'The management team was effective in providing guidance and support.', 52, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (32, 9, 25, 31, 'I felt valued and recognized for my contributions.', 24, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (44, 37, 28, 32, 'I enjoyed collaborating with my colleagues on various projects.', 94, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (11, 10, 9, 33, 'The workload was manageable and allowed for a good work-life balance.', 70, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (41, 14, 13, 34, 'I received constructive feedback that helped me improve my skills.', 28, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (3, 9, 25, 35, 'I had the chance to work on challenging and interesting projects.', 6, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (44, 18, 32, 36, 'I had the chance to work on challenging and interesting projects.', 48, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (35, 18, 5, 37, 'The communication within the team was clear and efficient.', 82, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (34, 7, 47, 38, 'I received constructive feedback that helped me improve my skills.', 29, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (48, 22, 5, 39, 'I received constructive feedback that helped me improve my skills.', 71, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (4, 26, 46, 40, 'The work environment was positive and supportive.', 32, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (9, 47, 12, 41, 'The communication within the team was clear and efficient.', 63, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (34, 7, 45, 42, 'The communication within the team was clear and efficient.', 68, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (10, 6, 3, 43, 'I enjoyed collaborating with my colleagues on various projects.', 43, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (27, 27, 20, 44, 'I felt valued and recognized for my contributions.', 73, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (39, 16, 9, 45, 'I enjoyed collaborating with my colleagues on various projects.', 60, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (45, 28, 46, 46, 'I appreciated the opportunities for professional growth and development.', 70, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (43, 16, 35, 47, 'I had the chance to work on challenging and interesting projects.', 18, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (31, 31, 32, 48, 'The company culture fostered creativity and innovation.', 61, 'first');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (6, 12, 29, 49, 'The work environment was positive and supportive.', 81, 'second');
-insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (32, 2, 36, 50, 'I enjoyed collaborating with my colleagues on various projects.', 38, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (19, 13, 23, 1, 'The management team was effective in providing guidance and support.', 3, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (29, 14, 31, 2, 'The management team was effective in providing guidance and support.', 5, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (33, 49, 17, 3, 'I had the chance to work on challenging and interesting projects.', 2, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (1, 12, 19, 4, 'I enjoyed collaborating with my colleagues on various projects.', 3, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (50, 11, 42, 5, 'The workload was manageable and allowed for a good work-life balance.', 4, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (34, 37, 8, 6, 'I felt valued and recognized for my contributions.', 1, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (13, 28, 33, 7, 'I appreciated the opportunities for professional growth and development.', 3, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (22, 30, 48, 8, 'I received constructive feedback that helped me improve my skills.', 4, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (4, 34, 35, 9, 'I had the chance to work on challenging and interesting projects.', 2, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (28, 46, 9, 10, 'The company culture fostered creativity and innovation.', 2, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (9, 28, 25, 11, 'I enjoyed collaborating with my colleagues on various projects.', 1, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (37, 18, 35, 12, 'The company culture fostered creativity and innovation.', 4, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (23, 35, 37, 13, 'The communication within the team was clear and efficient.', 5, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (12, 16, 18, 14, 'The management team was effective in providing guidance and support.', 3, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (32, 6, 19, 15, 'I received constructive feedback that helped me improve my skills.', 4, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (10, 3, 17, 16, 'The work environment was positive and supportive.', 2, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (35, 23, 37, 17, 'Working at the company was a great experience.', 1, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (19, 41, 21, 18, 'The workload was manageable and allowed for a good work-life balance.', 1, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (36, 8, 25, 19, 'The communication within the team was clear and efficient.', 4, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (28, 30, 11, 20, 'I appreciated the opportunities for professional growth and development.', 5, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (43, 20, 13, 21, 'I appreciated the opportunities for professional growth and development.', 4, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (6, 27, 10, 22, 'I had the chance to work on challenging and interesting projects.', 3, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (12, 6, 16, 23, 'I had the chance to work on challenging and interesting projects.', 1, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (42, 30, 40, 24, 'The workload was manageable and allowed for a good work-life balance.', 4, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (45, 8, 9, 25, 'The management team was effective in providing guidance and support.', 3, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (49, 27, 50, 26, 'The communication within the team was clear and efficient.', 1, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (38, 16, 50, 27, 'I appreciated the opportunities for professional growth and development.', 2, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (38, 40, 10, 28, 'I had the chance to work on challenging and interesting projects.', 3, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (15, 47, 11, 29, 'I appreciated the opportunities for professional growth and development.', 3, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (1, 14, 50, 30, 'The management team was effective in providing guidance and support.', 3, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (32, 9, 25, 31, 'I felt valued and recognized for my contributions.', 1, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (44, 37, 28, 32, 'I enjoyed collaborating with my colleagues on various projects.', 5, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (11, 10, 9, 33, 'The workload was manageable and allowed for a good work-life balance.', 3, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (41, 14, 13, 34, 'I received constructive feedback that helped me improve my skills.', 1, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (3, 9, 25, 35, 'I had the chance to work on challenging and interesting projects.', 1, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (44, 18, 32, 36, 'I had the chance to work on challenging and interesting projects.', 2, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (35, 18, 5, 37, 'The communication within the team was clear and efficient.', 4, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (34, 7, 47, 38, 'I received constructive feedback that helped me improve my skills.', 1, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (48, 22, 5, 39, 'I received constructive feedback that helped me improve my skills.', 4, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (4, 26, 46, 40, 'The work environment was positive and supportive.', 2, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (9, 47, 12, 41, 'The communication within the team was clear and efficient.', 3, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (34, 7, 45, 42, 'The communication within the team was clear and efficient.', 3, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (10, 6, 3, 43, 'I enjoyed collaborating with my colleagues on various projects.', 2, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (27, 27, 20, 44, 'I felt valued and recognized for my contributions.', 4, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (39, 16, 9, 45, 'I enjoyed collaborating with my colleagues on various projects.', 3, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (45, 28, 46, 46, 'I appreciated the opportunities for professional growth and development.', 3, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (43, 16, 35, 47, 'I had the chance to work on challenging and interesting projects.', 1, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (31, 31, 32, 48, 'The company culture fostered creativity and innovation.', 3, 'first');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (6, 12, 29, 49, 'The work environment was positive and supportive.', 4, 'second');
+insert into Reviews (CompanyPageID, JobID, StudentID, ReviewID, Comment, DifficultyRating, FirstOrSecondCoop) values (32, 2, 36, 50, 'I enjoyed collaborating with my colleagues on various projects.', 2, 'second');
 
 insert into Company_Representative (CompanyPageID, CompanyRepID, Name, Email) values (32, 1, 'Caz Coldridge', 'ccoldridge0@cam.ac.uk');
 insert into Company_Representative (CompanyPageID, CompanyRepID, Name, Email) values (41, 2, 'Hestia McWhin', 'hmcwhin1@tmall.com');
@@ -816,57 +877,6 @@ insert into Company_Representative (CompanyPageID, CompanyRepID, Name, Email) va
 insert into Company_Representative (CompanyPageID, CompanyRepID, Name, Email) values (40, 49, 'Noreen Fitzjohn', 'nfitzjohn1c@senate.gov');
 insert into Company_Representative (CompanyPageID, CompanyRepID, Name, Email) values (1, 50, 'Nady MacAlpyne', 'nmacalpyne1d@newyorker.com');
 
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (44, 11, 1, 'Approved', '2023-01-27 22:09:53');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (42, 45, 2, 'Approved', '2023-06-24 16:10:07');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (24, 17, 3, 'Pending', '2023-01-07 00:28:12');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (41, 10, 4, 'Denied', '2022-11-28 21:17:50');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (37, 3, 5, 'Denied', '2023-11-14 08:25:03');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (10, 32, 6, 'Approved', '2022-12-11 21:03:41');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (50, 1, 7, 'Pending', '2023-02-19 00:34:57');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (14, 25, 8, 'Denied', '2023-11-07 01:40:11');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (12, 9, 9, 'Denied', '2023-09-10 15:48:04');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (36, 31, 10, 'Denied', '2023-07-10 14:06:58');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (44, 36, 11, 'Approved', '2023-06-22 19:56:21');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (4, 23, 12, 'Approved', '2023-02-20 12:49:35');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (23, 26, 13, 'Pending', '2023-06-21 21:29:09');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (5, 33, 14, 'Approved', '2023-07-02 03:35:21');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (1, 15, 15, 'Denied', '2023-08-20 19:41:05');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (28, 47, 16, 'Denied', '2023-07-03 02:57:19');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (28, 10, 17, 'Pending', '2023-11-21 09:54:56');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (20, 49, 18, 'Pending', '2023-04-12 04:52:15');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (42, 26, 19, 'Approved', '2023-10-09 05:02:48');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (41, 43, 20, 'Approved', '2023-02-07 21:17:23');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (34, 36, 21, 'Approved', '2022-12-31 03:52:55');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (28, 20, 22, 'Pending', '2023-11-06 09:13:14');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (47, 50, 23, 'Pending', '2023-06-07 12:55:35');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (10, 28, 24, 'Denied', '2023-10-06 09:38:31');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (23, 32, 25, 'Pending', '2023-07-24 08:23:50');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (34, 40, 26, 'Approved', '2023-09-28 09:47:35');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (34, 14, 27, 'Approved', '2023-01-25 15:50:32');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (33, 11, 28, 'Denied', '2023-11-11 15:59:13');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (34, 18, 29, 'Approved', '2023-07-10 11:18:13');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (28, 4, 30, 'Pending', '2023-09-30 00:22:35');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (37, 41, 31, 'Denied', '2023-10-25 07:01:01');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (9, 33, 32, 'Approved', '2023-01-18 22:12:05');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (8, 5, 33, 'Denied', '2023-02-21 03:51:21');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (24, 43, 34, 'Approved', '2023-09-24 20:26:35');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (11, 38, 35, 'Denied', '2023-03-29 13:51:41');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (6, 7, 36, 'Pending', '2023-11-03 08:43:51');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (36, 32, 37, 'Pending', '2022-12-06 00:01:02');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (5, 50, 38, 'Approved', '2022-12-19 17:50:53');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (20, 24, 39, 'Approved', '2023-10-26 12:31:57');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (50, 35, 40, 'Pending', '2023-02-03 16:10:53');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (14, 31, 41, 'Pending', '2023-06-22 05:51:13');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (30, 5, 42, 'Pending', '2022-12-17 17:28:39');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (43, 47, 43, 'Approved', '2023-10-04 07:11:07');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (41, 49, 44, 'Pending', '2023-09-05 00:44:55');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (23, 24, 45, 'Approved', '2023-11-08 22:13:28');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (41, 18, 46, 'Denied', '2022-12-06 19:17:29');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (24, 43, 47, 'Denied', '2023-07-14 23:08:26');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (30, 28, 48, 'Approved', '2023-06-27 00:22:45');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (31, 36, 49, 'Pending', '2023-05-26 19:32:43');
-insert into Dispute (ReviewID, ModeratorID, DisputeID, ResolutionStatus, ResolutionDate) values (15, 47, 50, 'Pending', '2023-06-18 08:50:14');
-
 insert into Review_Response (CompanyRepID, ReviewID, ResponseID, ResponseContent, ResponseDate) values (46, 49, 1, 'Your satisfaction is our top priority. We will address your concerns promptly.', '2023-01-30 17:18:20');
 insert into Review_Response (CompanyRepID, ReviewID, ResponseID, ResponseContent, ResponseDate) values (10, 28, 2, 'Your satisfaction is our top priority. We will address your concerns promptly.', '2023-09-29 13:17:59');
 insert into Review_Response (CompanyRepID, ReviewID, ResponseID, ResponseContent, ResponseDate) values (7, 8, 3, 'Your satisfaction is our top priority. We will address your concerns promptly.', '2023-04-15 12:26:03');
@@ -917,57 +927,6 @@ insert into Review_Response (CompanyRepID, ReviewID, ResponseID, ResponseContent
 insert into Review_Response (CompanyRepID, ReviewID, ResponseID, ResponseContent, ResponseDate) values (35, 33, 48, 'Your satisfaction is our top priority. We will address your concerns promptly.', '2023-01-14 01:44:47');
 insert into Review_Response (CompanyRepID, ReviewID, ResponseID, ResponseContent, ResponseDate) values (14, 46, 49, 'Your satisfaction is our top priority. We will address your concerns promptly.', '2023-09-26 04:13:57');
 insert into Review_Response (CompanyRepID, ReviewID, ResponseID, ResponseContent, ResponseDate) values (8, 6, 50, 'We value your business and will do our best to assist you.', '2023-11-19 22:11:07');
-
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (16, 1, 'text/plain', 'entertainment', '2022-12-25 16:08:24');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (5, 2, 'application/xml', 'food', '2023-03-30 11:04:35');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (7, 3, 'image/png', 'business', '2023-06-22 14:35:21');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (36, 4, 'application/json', 'music', '2023-06-11 17:54:07');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (38, 5, 'image/jpeg', 'education', '2023-08-27 14:52:57');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (21, 6, 'image/png', 'business', '2023-07-13 10:10:38');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (48, 7, 'audio/mpeg', 'health', '2023-06-17 02:18:41');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (49, 8, 'application/pdf', 'business', '2022-12-20 17:19:16');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (26, 9, 'text/html', 'food', '2023-09-21 11:59:21');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (13, 10, 'audio/mpeg', 'music', '2023-04-17 13:09:39');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (37, 11, 'text/html', 'health', '2023-01-13 08:53:52');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (22, 12, 'application/pdf', 'food', '2023-07-03 12:18:46');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (47, 13, 'video/mp4', 'sports', '2023-09-23 07:44:12');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (41, 14, 'text/plain', 'education', '2023-05-28 15:06:54');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (13, 15, 'video/mp4', 'business', '2023-09-12 20:38:46');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (13, 16, 'text/html', 'technology', '2023-04-10 03:45:07');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (14, 17, 'application/xml', 'education', '2023-11-01 08:40:55');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (14, 18, 'text/plain', 'travel', '2023-02-02 11:39:54');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (16, 19, 'image/png', 'fashion', '2023-08-20 20:09:14');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (3, 20, 'application/json', 'fashion', '2023-08-09 19:22:13');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (4, 21, 'video/mp4', 'food', '2022-12-10 20:24:12');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (20, 22, 'audio/wav', 'business', '2023-11-17 21:32:59');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (26, 23, 'audio/wav', 'sports', '2023-04-01 08:19:04');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (28, 24, 'video/mp4', 'food', '2023-07-07 14:09:10');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (23, 25, 'image/png', 'sports', '2023-07-14 02:02:38');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (45, 26, 'audio/wav', 'technology', '2023-02-19 05:07:23');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (18, 27, 'audio/wav', 'education', '2022-12-05 05:59:25');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (48, 28, 'image/jpeg', 'sports', '2023-03-23 04:43:13');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (13, 29, 'audio/wav', 'travel', '2023-05-15 05:28:11');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (20, 30, 'image/png', 'food', '2023-10-29 14:31:04');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (12, 31, 'audio/wav', 'health', '2023-07-03 02:41:12');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (3, 32, 'text/plain', 'music', '2023-02-13 10:03:04');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (47, 33, 'text/plain', 'education', '2022-12-13 11:11:23');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (19, 34, 'video/mp4', 'entertainment', '2023-07-20 12:45:48');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (31, 35, 'application/xml', 'education', '2023-08-29 14:44:00');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (27, 36, 'application/xml', 'technology', '2022-12-14 08:50:52');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (35, 37, 'audio/mpeg', 'music', '2023-08-26 14:41:32');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (23, 38, 'image/jpeg', 'sports', '2023-10-14 13:32:26');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (47, 39, 'audio/mpeg', 'business', '2022-12-06 09:49:28');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (13, 40, 'image/png', 'fashion', '2023-04-07 12:34:27');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (24, 41, 'audio/mpeg', 'fashion', '2023-10-07 22:49:25');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (37, 42, 'text/plain', 'business', '2023-07-08 03:06:51');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (10, 43, 'audio/mpeg', 'sports', '2023-09-11 13:16:16');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (3, 44, 'application/pdf', 'health', '2023-04-07 10:45:33');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (32, 45, 'video/mp4', 'education', '2023-09-18 19:20:41');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (34, 46, 'text/plain', 'business', '2022-12-08 15:08:55');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (26, 47, 'text/html', 'education', '2023-09-05 15:58:11');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (29, 48, 'image/png', 'technology', '2023-11-21 02:00:41');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (45, 49, 'application/pdf', 'business', '2023-06-28 03:26:22');
-insert into Company_Content (CompanyRepID, ContentID, ContentType, ContentData, PostDate) values (12, 50, 'application/pdf', 'fashion', '2023-08-02 04:05:06');
 
 insert into Compensation_Data (CompensationID, Positiontype, AverageSalary, FilterCriteria, CompanyPageID) values (1, 'Assistant', 60000, 'Temporary', 41);
 insert into Compensation_Data (CompensationID, Positiontype, AverageSalary, FilterCriteria, CompanyPageID) values (2, 'Specialist', 100000, 'Experienced', 17);

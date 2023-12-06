@@ -34,10 +34,7 @@ def create_app():
 
     # Import the various Blueprint Objects
     from src.analytics.analytics import analytics
-    from src.company_content.company_content import company_content
     from src.compensation_data.compensation_data import compensation_data
-    from src.disputes.disputes import disputes
-    from src.guidelines.guidelines import guidelines
     from src.job_openings.job_openings import job_openings
     from src.review_responses.review_responses import review_responses
     from src.reviews.reviews import reviews
