@@ -26,7 +26,33 @@ def get_job_openings():
     theData = cursor.fetchall()
 
     # for each of the rows, zip the data elements together with
-    # the column headers. 
+    # the column headers.
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
+
+# Get all the products from the database
+@job_openings.route('/job_openings/<jobID>', methods=['GET'])
+def get_job_openings_detail(jobID):
+    # get a cursor object from the database
+    cursor = db.get_db().cursor()
+
+    # use cursor to query the database for a list of products
+    cursor.execute('SELECT CompanyPageID, JobID, Name, RoleDescription,Difficulty, GradeYearRequirement FROM Job_Openings WHERE JobID')
+
+    # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in
+    # putting column headers together with data
+    json_data = []
+
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers.
     for row in theData:
         json_data.append(dict(zip(column_headers, row)))
 
@@ -65,12 +91,13 @@ def add_new_job_opening():
     return 'Success!'
 
 
-@job_openings.route('/job_openings/<jobID>', methods=['GET'])
-def get_product_detail (jobID):
 
-    query = 'SELECT CompanyPageID, JobID, Name, RoleDescription,Difficulty, GradeYearRequirement FROM Job_Openings WHERE JobID = ' + str(jobID)
+@job_openings.route('/job_openings/company_page_id/<company_page_id>', methods=['GET'])
+def get_job_openings_company_detail (company_page_id):
+
+    query = 'SELECT CompanyPageID, JobID, Name, RoleDescription,Difficulty, GradeYearRequirement FROM Job_Openings WHERE CompanyPageID = ' + str(company_page_id)
+
     current_app.logger.info(query)
-
     cursor = db.get_db().cursor()
     cursor.execute(query)
     column_headers = [x[0] for x in cursor.description]
@@ -79,3 +106,51 @@ def get_product_detail (jobID):
     for row in the_data:
         json_data.append(dict(zip(column_headers, row)))
     return jsonify(json_data)
+
+
+@job_openings.route('/job_openings/<jobID>', methods=['PUT'])
+def update_job_openings(jobID):
+
+    # collecting data from the request object
+    the_data = request.json
+    current_app.logger.info(the_data)
+
+    #extracting the variable
+    company_page_id = the_data['CompanyPageID']
+    name = the_data['Name']
+    role_description = the_data['RoleDescription']
+    difficulty = the_data['Difficulty']
+    grade_year_requirement = the_data['GradeYearRequirement']
+    # Constructing the query
+    query = 'update Job_Openings set '
+
+    query += 'CompanyPageID = ' + str(company_page_id) + ', '
+    query += 'Name = "' + name + '", '
+    query += 'RoleDescription = "' + role_description + '", '
+    query += 'Difficulty = "' + difficulty + '", '
+    query += 'GradeYearRequirement = "' + grade_year_requirement + '" '
+
+    query += 'where JobID = '
+    query += str(jobID)
+    query += ";"
+    current_app.logger.info(query)
+
+    # executing and committing the insert statement
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+
+    return 'Success!'
+
+@job_openings.route('/job_openings/<jobID>', methods=['DELETE'])
+def delete_job_openings (jobID):
+
+    query = 'DELETE FROM Job_Openings WHERE JobID = ' + str(jobID)
+    current_app.logger.info(query)
+
+    # executing and committing the insert statement
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+
+    return 'Success!'
