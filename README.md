@@ -1,4 +1,7 @@
-# MySQL + Flask Boilerplate Project
+# Dreamworks: Transparency between prospective co-op students and employers
+
+## About Dreamworks
+Dreamworks is founded on an idea  - transparency of experiences. We enable a job board for co-op students that has specific factors that aren't included in current offerings. Namely, we offer students the ability to view compensation data, prior experience, and difficulty and experience ratings on company job postings. We also allow for companies to assign a representative to be able to respond to postive and negative reviews, and correct informationn about their firm. This additional transparency helps resolve the matching problem when it comes to applying for co-ops, and allows for more placement and better outcomes for all.
 
 This repo contains a boilerplate setup for spinning up 3 Docker containers: 
 1. A MySQL 8 container for obvious reasons
