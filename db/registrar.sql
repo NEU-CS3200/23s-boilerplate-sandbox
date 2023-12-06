@@ -328,6 +328,7 @@ insert into classroom (cID, seats, disabilityResources, type, building) values (
 insert into classroom (cID, seats, disabilityResources, type, building) values ('509', 50, 0, 'classroom', '4');
 
 
+<<<<<<< HEAD
 insert into major (mID, name) values (1, 'Computer Science');
 insert into major (mID, name) values (2, 'Business Administration');
 insert into major (mID, name) values (3, 'Psychology');
@@ -459,6 +460,17 @@ insert into student (studentID, firstName, lastName, email, gender, gradYear, ad
 insert into student (studentID, firstName, lastName, email, gender, gradYear, address, advisor, department, major) values ('778415546', 'Eugine', 'Brockwell', 'Eugine.Bro@northeastern.edu', 'Female', 2026, '34 Golf Street', '18160711', '2', '14');
 insert into student (studentID, firstName, lastName, email, gender, gradYear, address, advisor, department, major) values ('920600678', 'Alica', 'Spire', 'Alica.Spi@northeastern.edu', 'Female', 2024, '95449 Donald Avenue', '49163701', '3', '6');
 insert into student (studentID, firstName, lastName, email, gender, gradYear, address, advisor, department, major) values ('863959535', 'Dorie', 'Redihough', 'Dorie.Red@northeastern.edu', 'Polygender', 2023, '32685 Brentwood Lane', '33955590', '6', '17');
+=======
+insert into student (firstName, lastName, email, gradYear, address, gender, advisor, department, major) values ('John', 'Smith', 'jsmith@theguardian.com', 2026, '133 Door St', 'Male', 2, 1, 4);
+insert into student (firstName, lastName, email, gradYear, address, gender, advisor, department, major) values ('Ann', 'Smith', 'asmith@theguardian.com', 2026, '133 Door St', 'Female', 1, 2, 2);
+insert into student (firstName, lastName, email, gradYear, address, gender, advisor, department, major) values ('Jeff', 'Kingsley', 'jk44@mail.com', 2024, '2204 Apt 3', 'Male', 4, 4, 5);
+insert into student (firstName, lastName, email, gradYear, address, gender, advisor, department, major) values ('Ramona', 'Flowers', 'rflowers@netflix.com', 2028, '122 Door St', 'Female', 5, 5, 3);
+insert into student (firstName, lastName, email, gradYear, address, gender, advisor, department, major) values ('Alec', 'Nine', 'minecraft@thewayhome.com', 2029, '930 Alpha Way', 'Non-binary', 3, 2, 1);
+
+insert into professor (firstName, lastName, email) values ('Abe', 'Lincoln', 'honest@abe.com');
+insert into professor (firstName, lastName, email) values ('Glenn', 'Horton', 'ghort@mail.com');
+insert into professor (firstName, lastName, email) values ('Lisa', 'Simpson', 'lisasimpson@fox.com');
+>>>>>>> main
 
 insert into professor (professorID, firstName, lastName, email, officeLocation, department) values ('61168425', 'Elvin', 'McMyler', 'Elvin.McM@northeastern.edu', 'Maplewood Apartments 604', '10');
 insert into professor (professorID, firstName, lastName, email, officeLocation, department) values ('14860109', 'Tamar', 'Sarah', 'Tamar.Sar@northeastern.edu', 'Cedar Ridge Estates 507', '3');
