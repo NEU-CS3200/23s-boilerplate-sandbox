@@ -3,8 +3,7 @@ import json
 from src import db
 
 students = Blueprint('student', __name__)
-
-# advisors = Blueprint('advisor', __name__)
+courses_in_section = Blueprint('student_in_section',__name__)
 
 # Get all students from the database 
 @students.route('/students', methods=['GET'])
@@ -15,7 +14,7 @@ def get_students():
     cursor.execute('SELECT * FROM student')
 
     # grab the column headers from the returned data
-    column_headers = [x[0] for x in cursor.description]
+    column_headers = [x[0] for x in cursor.descripti@on]
 
     # create an empty dictionary object to use in 
     # putting column headers together with data
@@ -135,3 +134,27 @@ def delete_student(id):
     db.get_db().commit()
     
     return 'Success!'
+
+@courses_in_section.route('/sections/<section_id>/student/<student_id>', methods=['POST'])
+def add_student_in_section(section_id, student_id):
+    the_data = request.json
+    current_app.logger.info(the_data)
+
+    #extracting the variable
+    courseGrade = the_data['course_grade']
+    query = 'INSERT INTO students_in_section (section, student, courseGrade) '
+    query += 'values ('
+    query += str(section_id) + " , "
+    query += str(student_id) + " , " 
+    query += '"' + courseGrade + '" )'
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+    
+    return 'Success!'
+
+
+
+
+

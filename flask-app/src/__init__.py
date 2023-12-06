@@ -35,7 +35,7 @@ def create_app():
     # Import the various Beluprint Objects
     from src.customers.customers import customers
     from src.products.products  import products
-    from src.students.students import students
+    from src.students.students import students, courses_in_section
 
 
     # Register the routes from each Blueprint with the app object
@@ -43,6 +43,7 @@ def create_app():
     app.register_blueprint(customers,   url_prefix='/c')
     app.register_blueprint(products,    url_prefix='/p')
     app.register_blueprint(students,    url_prefix='/s')
+    app.register_blueprint(courses_in_section, url_prefix='/cis')
 
     # Don't forget to return the app object
     return app
