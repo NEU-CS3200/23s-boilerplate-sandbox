@@ -81,7 +81,7 @@ def modify_course(cID):
     query += name + '", term = "'
     query += term + '", department = '
     query += str(department) + ', professor = '
-    query += str(professor) + ' where courseID = {0})'.format(cID)
+    query += str(professor) + ' where courseID = {0}'.format(cID)
     current_app.logger.info(query)
 
     # executing and committing the update statement 
