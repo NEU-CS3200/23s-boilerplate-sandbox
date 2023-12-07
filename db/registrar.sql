@@ -1,3 +1,4 @@
+DROP database if exists registrar;
 CREATE DATABASE IF NOT EXISTS registrar;
 
 USE registrar;
@@ -77,10 +78,10 @@ CREATE TABLE IF NOT EXISTS professor (
 CREATE TABLE IF NOT EXISTS course (
     courseID int NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
     name varchar(50) NOT NULL,
-    term varchar(6) NOT NULL,
+    term varchar(16) NOT NULL,
     department int,
-    FOREIGN KEY (department) references department (departmentID) ON UPDATE CASCADE,
     professor int,
+    FOREIGN KEY (department) references department (departmentID) ON UPDATE CASCADE,
     FOREIGN KEY (professor) references professor (professorID) ON UPDATE CASCADE
 );
 
@@ -142,7 +143,7 @@ CREATE TABLE IF NOT EXISTS major_courses (
 );
 
 
-insert into advisor (advisorID, firstName, lastName, email, officeLocation, availableTime) values (1, 'Jeanette', 'Maffia', 'Jeanette.Maf@northeastern.edu', 'Petronas Towers 703', '9:52');
+insert into advisor (advisorID, firstName, lastName, email, officeLocation, availableTime) values (1, 'Jeanette', 'Maffia', 'Jeanette12.Maf@northeastern.edu', 'Petronas Towers 703', '9:52');
 insert into advisor (advisorID, firstName, lastName, email, officeLocation, availableTime) values (2, 'Della', 'Lown', 'Della.Low@northeastern.edu', 'Empire State Building 404', '12:46');
 insert into advisor (advisorID, firstName, lastName, email, officeLocation, availableTime) values (3, 'Walt', 'Donovin', 'Walt.Don@northeastern.edu', 'Tokyo Skytree 900', '15:09');
 insert into advisor (advisorID, firstName, lastName, email, officeLocation, availableTime) values (4, 'Willette', 'Milillo', 'Willette.Mil@northeastern.edu', 'CN Tower 608', '16:15');
@@ -245,26 +246,26 @@ insert into administrator (administratorID, firstName, lastName, email, officeLo
 insert into administrator (administratorID, firstName, lastName, email, officeLocation, department) values (39, 'Mohandis', 'Girardini', 'Mohandis.Gir@northeastern.edu', 'Maplewood Plaza 604', '6');
 insert into administrator (administratorID, firstName, lastName, email, officeLocation, department) values (40, 'Carita', 'Tudge', 'Carita.Tud@northeastern.edu', 'Oakwood Tower 100', '5');
 
-insert into building (buildingID, hours, daycleaned, administrator) values (1, '1:47 PM', 'Tuesday', '4');
-insert into building (buildingID, hours, daycleaned, administrator) values (2, '9:45 AM', 'Tuesday', '11');
-insert into building (buildingID, hours, daycleaned, administrator) values (3, '11:18 AM', 'Thursday', '1');
-insert into building (buildingID, hours, daycleaned, administrator) values (4, '12:17 PM', 'Monday', '29');
-insert into building (buildingID, hours, daycleaned, administrator) values (5, '8:12 AM', 'Tuesday', '26');
-insert into building (buildingID, hours, daycleaned, administrator) values (6, '2:36 PM', 'Saturday', '19');
-insert into building (buildingID, hours, daycleaned, administrator) values (7, '4:16 PM', 'Wednesday', '10');
-insert into building (buildingID, hours, daycleaned, administrator) values (8, '4:55 PM', 'Wednesday', '15');
-insert into building (buildingID, hours, daycleaned, administrator) values (9, '1:24 PM', 'Tuesday', '23');
-insert into building (buildingID, hours, daycleaned, administrator) values (10, '4:33 PM', 'Wednesday', '32');
-insert into building (buildingID, hours, daycleaned, administrator) values (11, '3:08 PM', 'Monday', '2');
-insert into building (buildingID, hours, daycleaned, administrator) values (12, '12:32 PM', 'Sunday', '40');
-insert into building (buildingID, hours, daycleaned, administrator) values (13, '1:38 PM', 'Tuesday', '39');
-insert into building (buildingID, hours, daycleaned, administrator) values (14, '11:43 AM', 'Tuesday', '14');
-insert into building (buildingID, hours, daycleaned, administrator) values (15, '3:01 PM', 'Thursday', '8');
-insert into building (buildingID, hours, daycleaned, administrator) values (16, '3:52 PM', 'Thursday', '28');
-insert into building (buildingID, hours, daycleaned, administrator) values (17, '9:44 AM', 'Thursday', '30');
-insert into building (buildingID, hours, daycleaned, administrator) values (18, '9:02 AM', 'Thursday', '33');
-insert into building (buildingID, hours, daycleaned, administrator) values (19, '12:45 PM', 'Thursday', '6');
-insert into building (buildingID, hours, daycleaned, administrator) values (20, '2:35 PM', 'Sunday', '25');
+insert into building (buildingID, hours, dayCleaned, administrator) values (1, '1:47 PM', 'Tuesday', '4');
+insert into building (buildingID, hours, dayCleaned, administrator) values (2, '9:45 AM', 'Tuesday', '11');
+insert into building (buildingID, hours, dayCleaned, administrator) values (3, '11:18 AM', 'Thursday', '1');
+insert into building (buildingID, hours, dayCleaned, administrator) values (4, '12:17 PM', 'Monday', '29');
+insert into building (buildingID, hours, dayCleaned, administrator) values (5, '8:12 AM', 'Tuesday', '26');
+insert into building (buildingID, hours, dayCleaned, administrator) values (6, '2:36 PM', 'Saturday', '19');
+insert into building (buildingID, hours, dayCleaned, administrator) values (7, '4:16 PM', 'Wednesday', '10');
+insert into building (buildingID, hours, dayCleaned, administrator) values (8, '4:55 PM', 'Wednesday', '15');
+insert into building (buildingID, hours, dayCleaned, administrator) values (9, '1:24 PM', 'Tuesday', '23');
+insert into building (buildingID, hours, dayCleaned, administrator) values (10, '4:33 PM', 'Wednesday', '32');
+insert into building (buildingID, hours, dayCleaned, administrator) values (11, '3:08 PM', 'Monday', '2');
+insert into building (buildingID, hours, dayCleaned, administrator) values (12, '12:32 PM', 'Sunday', '40');
+insert into building (buildingID, hours, dayCleaned, administrator) values (13, '1:38 PM', 'Tuesday', '39');
+insert into building (buildingID, hours, dayCleaned, administrator) values (14, '11:43 AM', 'Tuesday', '14');
+insert into building (buildingID, hours, dayCleaned, administrator) values (15, '3:01 PM', 'Thursday', '8');
+insert into building (buildingID, hours, dayCleaned, administrator) values (16, '3:52 PM', 'Thursday', '28');
+insert into building (buildingID, hours, dayCleaned, administrator) values (17, '9:44 AM', 'Thursday', '30');
+insert into building (buildingID, hours, dayCleaned, administrator) values (18, '9:02 AM', 'Thursday', '33');
+insert into building (buildingID, hours, dayCleaned, administrator) values (19, '12:45 PM', 'Thursday', '6');
+insert into building (buildingID, hours, dayCleaned, administrator) values (20, '2:35 PM', 'Sunday', '25');
 
 insert into classroom (cID, seats, disabilityResources, type, building) values (1, 50, 1, 'classroom', '19');
 insert into classroom (cID, seats, disabilityResources, type, building) values (2, 50, 0, 'classroom', '14');
@@ -1092,12 +1093,11 @@ insert into major_courses (major, course) values ('10', '7');
 insert into major_courses (major, course) values ('15', '18');
 insert into major_courses (major, course) values ('4', '23');
 insert into major_courses (major, course) values ('2', '4');
-insert into major_courses (major, course) values ('28', '12');
 insert into major_courses (major, course) values ('20', '33');
 insert into major_courses (major, course) values ('25', '37');
 insert into major_courses (major, course) values ('13', '54');
 insert into major_courses (major, course) values ('8', '38');
-insert into major_courses (major, course) values ('27', '6');
+insert into major_courses (major, course) values ('27', '7');
 insert into major_courses (major, course) values ('18', '15');
 insert into major_courses (major, course) values ('9', '13');
 insert into major_courses (major, course) values ('19', '10');
@@ -1121,7 +1121,7 @@ insert into major_courses (major, course) values ('17', '22');
 insert into major_courses (major, course) values ('15', '47');
 insert into major_courses (major, course) values ('2', '8');
 insert into major_courses (major, course) values ('16', '14');
-insert into major_courses (major, course) values ('13', '60');
+insert into major_courses (major, course) values ('13', '6');
 insert into major_courses (major, course) values ('11', '19');
 insert into major_courses (major, course) values ('8', '36');
 insert into major_courses (major, course) values ('27', '50');
