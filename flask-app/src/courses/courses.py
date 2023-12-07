@@ -172,7 +172,7 @@ def modify_assignment(aID):
     title = the_data['title']
     # Constructing the query
     query = 'update assignment set title = "'
-    query += title + '", where assignmentID = {0})'.format(aID)
+    query += title + '" where assignmentID = {0}'.format(aID)
     current_app.logger.info(query)
     # executing and committing the update statement 
     cursor = db.get_db().cursor()
@@ -184,6 +184,6 @@ def modify_assignment(aID):
 @courses.route('/courses/assignment/<aID>', methods=['DELETE'])
 def delete_assignment(aID):
     cursor = db.get_db().cursor()
-    cursor.execute('delete from assignment where assignmentID = {0})'.format(aID))
+    cursor.execute('delete from assignment where assignmentID = {0}'.format(aID))
     db.get_db().commit()
     return 'Success!'
