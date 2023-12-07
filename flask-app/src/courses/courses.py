@@ -9,7 +9,7 @@ courses = Blueprint('courses', __name__)
 @courses.route('/courses', methods=['GET'])
 def get_courses():
     cursor = db.get_db().cursor()
-    cursor.execute('select name, term from course')
+    cursor.execute('select * from course')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
