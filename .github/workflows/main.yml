@@ -1,0 +1,56 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+        
+    - name: Build Docker images
+      run: docker compose build
+      
+    - name: Run Tests
+      run: |
+        # 创建必要的密钥文件
+        mkdir -p secrets
+        echo "your_root_password" > secrets/db_root_password.txt
+        echo "your_webapp_password" > secrets/db_password.txt
+        
+        # 启动 Docker 容器
+        docker compose up -d
+        
+        # 等待服务启动
+        sleep 30
+        
+        # 运行测试（需要在项目中添加测试脚本）
+        # docker compose exec flask python -m pytest
+        
+    - name: Stop containers
+      if: always()
+      run: docker compose down
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Deploy to production
+      run: |
+        echo "部署步骤将根据实际部署环境配置"
+        # 这里添加实际的部署命令 
