@@ -19,7 +19,7 @@ This repo contains a boilerplate setup for spinning up 3 Docker containers:
 
 ## Project Description
 
-Our project is an personal finance management application we call Pocket Protectors, the group members are Donny Le, Trayna Bui, Tisya Sharma, and Jasmine McCoy.
+Our project is an personal finance management application we call Pocket Protectors, the group members are Tisya Sharma, Donny Le, Trayna Bui, and Jasmine McCoy.
 
 Although we did not have to create a login page and could have made separate homepages for each user, we believe the usability and personalisation of the application from our starting page, the Dashboard, is equally as useful for each of our personas. As such, we opted to build out a login that would allow us to keep track of the user and their information as they navigate the site (NOTE: most endpoints/features will not be functional until the user is logged in).
 
